@@ -15,5 +15,5 @@ yarn serve
 yarn build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Projeto de uma aplicação de pedidos de sanduíche.
+O cliente pode fazer o pedido esconlhendo os ingredientes do seu sanduíche.
