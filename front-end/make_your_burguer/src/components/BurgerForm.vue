@@ -47,7 +47,20 @@
 
 <script>
 export default {
-    name: "BurgerForm"    
+    name: "BurgerForm",
+    data() {
+        return{
+            paes: null,
+            carnes: null,
+            opcionaisdata:null,
+            nome:null,
+            pao:null,
+            carne:null,
+            opcionais:[],
+            status:"solicitado",
+            msg:null
+        }
+    } 
 }
 </script>
 
@@ -77,8 +90,8 @@ export default {
     input, select{
         padding: 5px 10px;
         width: 300px;
-    }
         color: #222;
+    }
 
     #opcionais-container{
         flex-direction: row;
