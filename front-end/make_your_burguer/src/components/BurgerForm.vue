@@ -13,7 +13,10 @@
                         <label for="pao">Escolha o pão: </label>
                         <select name="pao" id="pao" v-model="pao"> 
                             <option value="">Selecione o seu pão</option>
-                            <option value="integral">integral</option>
+                            <!-- <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
+                                {{ pao.tipo }}
+
+                            </option> -->
                         </select>
                     </div>
 
@@ -60,7 +63,22 @@ export default {
             status:"solicitado",
             msg:null
         }
-    } 
+    },
+    methods:{
+        async getIngredientes(){
+            const req = await fetch("http://localhost:3000/ingredientes");
+            const data = await req.json();
+
+            console.log(data);
+        }
+    },
+    mounted(){
+        // this.getIngredientes();
+
+        // this.paes = data.paes;
+        // this.carnes = data.carnes;
+        // this.opcionaisdata = data.opcionais;
+    }
 }
 </script>
 
