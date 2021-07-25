@@ -76,7 +76,7 @@ export default {
 
         async createBurger(e){
             e.preventDefault();
-
+                       
             const data = {
                 nome: this.nome,
                 carne: this.carne,
@@ -85,18 +85,19 @@ export default {
                 status:"Solicitado"
             }
 
-            console.log(data);
+
+  
             const dataJson = JSON.stringify(data);
 
             const req = await fetch("http://localhost:3000/burgers", {
             method: "POST",
-            headers:{"content-type":"aplication/json"},
+            headers:{"Content-Type":"application/json"},
             body:dataJson
                 
             });
 
             const res = await req.json();
-            //Colocar mensagem do sistem
+            //Colocar mensagem do sistema
             this.msg = `Pedido  número: ${res.id} realizado com sucesso!`
 
             // Limpar os campos
