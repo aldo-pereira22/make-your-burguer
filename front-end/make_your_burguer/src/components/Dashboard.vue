@@ -1,5 +1,6 @@
 <template>
     <div id="burger-table">
+                <Message :msg="msg" v-show="msg" />
         <div>
             <div id="burger-table-heading">
                 <div class="order-id">#:</div>
@@ -41,6 +42,8 @@
 
 
 <script>
+
+    import Message from './Message.vue'
     export default {
         name:"Dashboard",
 
@@ -48,8 +51,12 @@
             return {
                 burgers:null,
                 burger_id: null,
-                status:[]
+                status:[],
+                msg: null
             }
+        },
+        components:{
+            Message
         },
 
         methods:{
@@ -80,7 +87,12 @@
 
                 const res = await req.json();
 
-                // msg
+                //Colocar a mensagem de exclusão
+                this.msg = `Pedido excluido!`
+                //Limpar mensagem
+                setTimeout( () => this.msg = "", 2000);
+
+                
                 this.getPedidos();
             },
 
@@ -94,6 +106,9 @@
                 });
 
                 const res = await req.json();
+                this.msg = `O pedido Número: ${res.id} foi atualizado para ${res.status}`
+                //Limpar mensagem
+                setTimeout( () => this.msg = "", 3000);
 
 
             }

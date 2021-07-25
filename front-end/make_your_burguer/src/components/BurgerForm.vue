@@ -101,7 +101,7 @@ export default {
             this.msg = `Pedido  número: ${res.id} realizado com sucesso!`
 
             // Limpar os campos
-            setTimeout( ()=> this.msg =  "", 3000 )
+            setTimeout( ()=> this.msg =  "", 3000 );
             
             this.nome ="";
             this.carne ="";
