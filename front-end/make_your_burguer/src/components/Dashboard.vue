@@ -25,32 +25,12 @@
 
                     <div>
                         <select name="status" class="status">
-                            <option value="">Selecione</option>
+                            <option v-for="s in status" :key="s.id" value="s.tipo" :selected="burger.status == s.tipo" > {{s.tipo}} </option>
                         </select>
                         <button class="delete-btn">Cancelar</button>
                     </div>
                 </div>
 
-
-                <div class="burger-table-row">
-                    <div class="order-number">1</div>
-                    <div>Joõa</div>
-                    <div>Pão de trigo</div>
-                    <div>Maminha</div>
-                    <div>
-                        <ul>
-                            <li>Salame</li>
-                            <li>Tomate</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <select name="status" class="status">
-                            <option value="">Selecione</option>
-                        </select>
-                        <button class="delete-btn">Cancelar</button>
-                    </div>
-                </div>
 
                 
             </div>
@@ -80,7 +60,17 @@
                 this.burgers = data;
 
                 // resgatar os status
-                console.log(this.burgers);
+                this.getStatus();          
+            },
+
+            async getStatus(){
+                const req = await fetch("http://localhost:3000/status");
+
+                const data  = await req.json();
+
+                this.status  = data;
+
+                console.log(data)
             }
         },
         mounted(){
